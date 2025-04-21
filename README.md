@@ -61,3 +61,20 @@ For hypothesis search with base LLaMA model, you can run
 ```
 python baseline_ir.py --task list_func --llm_name meta-llama/Meta-Llama-3-8B-Instruct --hypo_size 10
 ```
+
+## 
+
+If you use the code, dataset or model checkpoints, please cite the following work.
+
+```
+@misc{sadeq2025improvingincontextlearningreasoning,
+      title={Improving In-Context Learning with Reasoning Distillation}, 
+      author={Nafis Sadeq and Xin Xu and Zhouhang Xie and Julian McAuley and Byungkyu Kang and Prarit Lamba and Xiang Gao},
+      year={2025},
+      eprint={2504.10647},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.10647}, 
+}
+```
+
