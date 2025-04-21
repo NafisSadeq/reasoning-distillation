@@ -1,0 +1,26 @@
+{
+    "list_func": {
+        "generate_rule": "Consider the following input-output examples. Both the input and the output is a python list. Based on the example shown below, identify the rule that can be used to convert the input into output. Your output should solely contain the rule.\n",
+        "apply_rule": "The following problem contains a rule and an input. Use the rule to produce the output from the given input. Your output should solely be a valid python list that represents the output. No other text or description should be present.\n",
+        "direct_fewshot1": "Consider the following input-output examples. Both the input and the output is a python list.\n",
+        "direct_fewshot2": "Based on the example shown above, produce the output from the following input. No other text or description should be present.\n"
+    },
+    "1d_arc": {
+        "generate_rule": "Consider the following input-output examples. Both the input and the output is a python list. Based on the example shown below, identify the rule that can be used to convert the input into output. Your output should solely contain the rule.\n",
+        "apply_rule": "The following problem contains a rule and an input. Use the rule to produce the output from the given input. Your output should solely be a valid python list that represents the output. No other text or description should be present.\n",
+        "direct_fewshot1": "Consider the following input-output examples. Both the input and the output is a python list.\n",
+        "direct_fewshot2": "Based on the example shown above, produce the output from the following input. No other text or description should be present.\n"
+    },
+    "acre": {
+        "generate_rule": "Generate a rule that maps the following inputs to their corresponding outputs. Each example is an input-output pair. The input is a list of objects. The presence of certain objects will trigger the light to turn on. The output is either 'on', 'off', or 'undetermined', indicating the state of the light or if the state of the light cannot be determined. Your output should solely contain the rule.\n",
+        "apply_rule": "Generate an output corresponding to the given input based on the following rule. Each example is an input-output pair. The input is a list of objects. The presence of certain objects will trigger the light to turn on. The output is either 'on', 'off', or 'undetermined', indicating the state of the light or if the state of the light cannot be determined.\n",
+        "direct_fewshot1": "Consider the following few-shot examples. Each example is an input-output pair. The input is a list of objects. The presence of certain objects will trigger the light to turn on. The output is either 'on', 'off', or 'undetermined', indicating the state of the light or if the state of the light cannot be determined.\n",
+        "direct_fewshot2": "Based on the example shown above, produce the output from the following input. No other text or description should be present.\n"
+    },
+    "scan": {
+        "generate_rule": "Generate rules that map the following inputs to their corresponding outputs. Specify the priority of the rules if necessary. Try to make your rules as minimal and generally applicable as possible.\n",
+        "apply_rule": "Generate an output corresponding to the given input based on the following rules. The output is a sequence of tokens joined by spaces.\n",
+        "direct_fewshot1": "Consider the following input-output few-shot examples.\n",
+        "direct_fewshot2": "Based on the example shown above, produce the output from the following input. No other text or description should be present.\n"
+    }
+}

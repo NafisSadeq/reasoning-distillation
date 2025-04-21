@@ -1,0 +1,12 @@
+__pycache__/
+.ipynb_checkpoints
+*/.ipynb_checkpoints
+**/.ipynb_checkpoints
+data/*/gpt*
+data/merged
+models/
+outputs/
+*.sh
+*.ipynb
+figures/
+
