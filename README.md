@@ -62,7 +62,7 @@ For hypothesis search with base LLaMA model, you can run
 python baseline_ir.py --task list_func --llm_name meta-llama/Meta-Llama-3-8B-Instruct --hypo_size 10
 ```
 
-## 
+## Citation
 
 If you use the code, dataset or model checkpoints, please cite the following work.
 
