@@ -4,9 +4,15 @@ This repository contains the code for the paper [Improving In-Context Learning w
 
 ## News
 
-Model checkpoints are now available in Hugging Face 🤗: [ReDis-Llama](https://huggingface.co/nsadeq/ReDis-Llama), [ReDis-Qwen](https://huggingface.co/nsadeq/ReDis-Qwen), [ReDis-Mistral](https://huggingface.co/nsadeq/ReDis-Mistral)
+Model checkpoints are now available in Hugging Face 🤗
+1. [ReDis-Llama](https://huggingface.co/nsadeq/ReDis-Llama)
+2. [ReDis-Qwen](https://huggingface.co/nsadeq/ReDis-Qwen)
+3. [ReDis-Mistral](https://huggingface.co/nsadeq/ReDis-Mistral)
 
-All training datasets are now available in Hugging Face 🤗: [Generate Rule Alignment](https://huggingface.co/datasets/nsadeq/redis_generate_rule_alignment), [Generate Rule SFT](https://huggingface.co/datasets/nsadeq/redis_generate_rule_sft), [Follow Rule SFT](https://huggingface.co/datasets/nsadeq/redis_follow_rule_sft)
+All training datasets are now available in Hugging Face 🤗
+1. [Generate Rule Alignment](https://huggingface.co/datasets/nsadeq/redis_generate_rule_alignment)
+2. [Generate Rule SFT](https://huggingface.co/datasets/nsadeq/redis_generate_rule_sft)
+3. [Follow Rule SFT](https://huggingface.co/datasets/nsadeq/redis_follow_rule_sft)
 
 ## Install
 
@@ -16,8 +22,15 @@ Create conda environment using the provided requirements.txt
 conda create -n <environment-name> --file requirements.txt
 ```
 
+## Inference (Hugging Face checkpoints)
+You can directly use ReDis checkpoints from Hugging Face to perform inference.
+```
+python proposed.py --task acre --llm_name nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+python proposed.py --task acre --llm_name nsadeq/ReDis-Qwen --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+python proposed.py --task acre --llm_name nsadeq/ReDis-Mistral --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+```
 
-## Data augmentation
+## Data augmentation (Custom Training Only)
 
 Perform data augmentation using a teacher model such GPT-4o
 
@@ -36,15 +49,15 @@ python construct_pair.py
 
 This step will generate three datasets, generate_rule_sft.json, apply_rule_sft.json, and generate_rule_dpo.json. We already provide the three datasets within ./data/merged folder
 
-## Model training
+## Model training (Custom Training Only)
 
-We use LLaMA-Factory for model training. Install LLaMA-Factory following instructions here: https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#installation. Copy the three dataset files within LLaMA-Factory/data folder and update LLaMA-Factorydata/dataset_info.json as required. Follow the instructions here: https://github.com/hiyouga/LLaMA-Factory/blob/main/data/README.md. Then you can perform suprvised fine-tuning on the generate_rule_sft.json and apply_rule_sft.json datasets as follows. 
+We use LLaMA-Factory for model training. Install LLaMA-Factory following instructions [here](https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#installation). Copy the three dataset files within [dataset folder](https://github.com/hiyouga/LLaMA-Factory/tree/main/data) and update [dataset info](LLaMA-Factorydata/dataset_info.json) as required. Follow the instructions [here](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/README.md). Then you can perform suprvised fine-tuning as follows. 
 
 ```  
 llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
 ```
 
-After that you can perform alignment on the generate_rule_dpo.json dataset as follows.
+After that you can perform alignment as follows.
 
 ```
 llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
@@ -52,17 +65,12 @@ llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
 
 Make sure to update the training configuration files llama3_lora_sft.yaml and llama3_lora_dpo.yaml with appropriate model name, dataset names, and hyper-parameters.
 
-## Inference
+## Inference (Custom Trained Models)
 
 Load the base models with corresponding LoRA adapters created during model tuning for inference.
 
 ```
 python proposed.py --task list_func --llm_name meta-llama/Meta-Llama-3-8B-Instruct --adapter_path <adapter_path> --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
-```
-
-Alternatively, you can directly use ReDis checkpoints from Hugging Face to perform inference.
-```
-python proposed.py --task list_func --llm_name nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
 ```
 
 ## Baselines
