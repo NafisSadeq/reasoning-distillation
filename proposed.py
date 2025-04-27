@@ -11,6 +11,9 @@ parser.add_argument('--llm_name', type=str, default="meta-llama/Meta-Llama-3-8B-
     'meta-llama/Meta-Llama-3-8B-Instruct',
     'mistralai/Mistral-7B-Instruct-v0.3', 
     'Qwen/Qwen2.5-7B-Instruct',
+    'nsadeq/ReDis-Llama',
+    'nsadeq/ReDis-Qwen',
+    'nsadeq/ReDis-Mistral',
     'gpt-3.5-turbo-1106',
     'gpt-4o'
 ], help='Name of the language model')
