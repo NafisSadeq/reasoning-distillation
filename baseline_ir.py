@@ -90,7 +90,7 @@ for di,datum in enumerate(tqdm(data)):
     rule_score_list = []
     for ri in range(hypo_size):
         try:
-            rule = llm.generate(prompt,temperature=1.0)
+            rule = llm.generate(prompt,temperature=0.9)
         except:
             print("Exception")
             continue
@@ -100,7 +100,7 @@ for di,datum in enumerate(tqdm(data)):
             test_prompt = prompts[task]["apply_rule"]+"\n"+rule+"\n"
             test_prompt = test_prompt+ "Input: "+ str(example['input'])+"\n"
             try:
-                response = llm.generate(test_prompt,temperature=0.6)
+                response = llm.generate(test_prompt,temperature=0.7)
             except:
                 print("Exception")
                 continue
@@ -123,7 +123,7 @@ for di,datum in enumerate(tqdm(data)):
         test_prompt = prompts[task]["apply_rule"]+"\n"+rule+"\n"
         test_prompt = test_prompt+ "Input: "+ str(example['input'])+"\n"
         try:
-            response = llm.generate(test_prompt,temperature=0.6)
+            response = llm.generate(test_prompt,temperature=0.7)
         except:
             print("Exception")
             continue

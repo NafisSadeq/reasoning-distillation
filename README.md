@@ -1,3 +1,13 @@
+## Summary
+
+This repository contains the code for the paper [Improving In-Context Learning with Reasoning Distillation](https://arxiv.org/abs/2504.10647). In this work, we improve the inductive reasoning ability of language models using teacher-to-student reasoning distillation. The proposed method achieves improved accuracy and cost-to-performance ratio compared to the teacher model GPT-4o.
+
+## News
+
+Model checkpoints are now available in Hugging Face 🤗: [ReDis-Llama](https://huggingface.co/nsadeq/ReDis-Llama), [ReDis-Qwen](https://huggingface.co/nsadeq/ReDis-Qwen), [ReDis-Mistral](https://huggingface.co/nsadeq/ReDis-Mistral)
+
+All training datasets are now available in Hugging Face 🤗: [Generate Rule Alignment](https://huggingface.co/datasets/nsadeq/redis_generate_rule_alignment), [Generate Rule SFT](https://huggingface.co/datasets/nsadeq/redis_generate_rule_sft), [Follow Rule SFT](https://huggingface.co/datasets/nsadeq/redis_follow_rule_sft)
+
 ## Install
 
 Create conda environment using the provided requirements.txt
@@ -50,6 +60,12 @@ Load the base models with corresponding LoRA adapters created during model tunin
 python proposed.py --task list_func --llm_name meta-llama/Meta-Llama-3-8B-Instruct --adapter_path <adapter_path> --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
 ```
 
+Alternatively, you can directly use ReDis checkpoints from Hugging Face to perform inference.
+```
+python proposed.py --task list_func --llm_name nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+```
+
+## Baselines
 We also provide codes for corresponding baseline codes for both direct few-shot prompting and hypothesis search. For direct few-shot prompting, you can run
 
 ```
