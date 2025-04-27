@@ -16,13 +16,20 @@ All training datasets are now available in Hugging Face 🤗
 
 ## Install
 
+Clone repository
+```
+git clone https://github.com/NafisSadeq/reasoning-distillation.git
+cd reasoning-distillation/
+```
 Create conda environment using the provided requirements.txt
 
 ```
-conda create -n <environment-name> --file requirements.txt
+conda create -n redis python=3.9
+pip install -r requirements.txt
 ```
 
 ## Inference (Hugging Face checkpoints)
+
 You can directly use ReDis checkpoints from Hugging Face to perform inference.
 ```
 python proposed.py --task acre --llm_name nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
