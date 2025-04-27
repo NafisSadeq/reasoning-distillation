@@ -38,20 +38,22 @@ hypo_size = args.hypo_size
 rg_temp = args.rg_temp
 rf_temp = args.rf_temp
 
-if(llm_name.startswith("Qwen")):
+if(llm_name.startswith("Qwen") or llm_name=='nsadeq/ReDis-Qwen'):
     llm = QwenAdapter(llm_name,adapter_path)
     llm_tag = "qwen"
-elif(llm_name.startswith("meta")):
+elif(llm_name.startswith("meta") or llm_name=='nsadeq/ReDis-Llama'):
     llm = LlamaAdapter(llm_name,adapter_path)
     llm_tag = "llama3"
-elif(llm_name.startswith("mistralai")):
+elif(llm_name.startswith("mistralai") or llm_name=='nsadeq/ReDis-Mistral'):
     llm = LlamaAdapter(llm_name,adapter_path)
     llm_tag = "mistral"
 else:
     llm = ChatGPT(llm_name)
     llm_tag = llm_name[:5]
 
-adapter_tag = adapter_path.split("/")[-3]
+adapter_tag = "none"
+if(adapter_path is not None):
+    adapter_tag = adapter_path.split("/")[-3]
 
 if(task == "list_func"):
     data_path = "./data/list_func/list_function_test.jsonl"
