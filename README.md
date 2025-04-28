@@ -30,11 +30,11 @@ pip install -r requirements.txt
 
 ## Inference (Hugging Face checkpoints)
 
-You can directly use ReDis checkpoints from Hugging Face to perform inference.
+You can directly use ReDis adapters from Hugging Face to perform inference.
 ```
-python proposed.py --task acre --llm_name nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
-python proposed.py --task acre --llm_name nsadeq/ReDis-Qwen --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
-python proposed.py --task acre --llm_name nsadeq/ReDis-Mistral --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+python proposed.py --task acre --llm_name meta-llama/Meta-Llama-3-8B-Instruct --adapter_path nsadeq/ReDis-Llama --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+python proposed.py --task acre --llm_name Qwen/Qwen2.5-7B-Instruct --adapter_path nsadeq/ReDis-Qwen --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
+python proposed.py --task acre --llm_name mistralai/Mistral-7B-Instruct-v0.3 --adapter_path nsadeq/ReDis-Mistral --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
 ```
 
 ## Data augmentation (Custom Training Only)
@@ -72,7 +72,7 @@ llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
 
 Make sure to update the training configuration files llama3_lora_sft.yaml and llama3_lora_dpo.yaml with appropriate model name, dataset names, and hyper-parameters.
 
-## Inference (Custom Trained Models)
+## Inference
 
 Load the base models with corresponding LoRA adapters created during model tuning for inference.
 

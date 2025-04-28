@@ -11,9 +11,6 @@ parser.add_argument('--llm_name', type=str, default="meta-llama/Meta-Llama-3-8B-
     'meta-llama/Meta-Llama-3-8B-Instruct',
     'mistralai/Mistral-7B-Instruct-v0.3', 
     'Qwen/Qwen2.5-7B-Instruct',
-    'nsadeq/ReDis-Llama',
-    'nsadeq/ReDis-Qwen',
-    'nsadeq/ReDis-Mistral',
     'gpt-3.5-turbo-1106',
     'gpt-4o'
 ], help='Name of the language model')
@@ -38,13 +35,13 @@ hypo_size = args.hypo_size
 rg_temp = args.rg_temp
 rf_temp = args.rf_temp
 
-if(llm_name.startswith("Qwen") or llm_name=='nsadeq/ReDis-Qwen'):
+if(llm_name.startswith("Qwen")):
     llm = QwenAdapter(llm_name,adapter_path)
     llm_tag = "qwen"
-elif(llm_name.startswith("meta") or llm_name=='nsadeq/ReDis-Llama'):
+elif(llm_name.startswith("meta")):
     llm = LlamaAdapter(llm_name,adapter_path)
     llm_tag = "llama3"
-elif(llm_name.startswith("mistralai") or llm_name=='nsadeq/ReDis-Mistral'):
+elif(llm_name.startswith("mistralai")):
     llm = LlamaAdapter(llm_name,adapter_path)
     llm_tag = "mistral"
 else:
@@ -53,7 +50,7 @@ else:
 
 adapter_tag = "none"
 if(adapter_path is not None):
-    adapter_tag = adapter_path.split("/")[-3]
+    adapter_tag = adapter_path.lower().replace("/","_").replace("-","_")
 
 if(task == "list_func"):
     data_path = "./data/list_func/list_function_test.jsonl"
