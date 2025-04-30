@@ -182,9 +182,9 @@ def construct_dataset(dir_loc,rule_reward_file,all_hypo_file,apply_rule_file,sco
 task_data_locs = [
     (
     "./data/1d_arc/gpt-4",
-    "rule_reward_set_train_25_1.0.json",
-    "all_hypo_train_25_1.0.json",
-    "rule_apply_train_25_1.0.json",
+    "rule_reward_set_train_50_1.0.json",
+    "all_hypo_train_50_1.0.json",
+    "rule_apply_train_50_1.0.json",
     1,
     "1D_ARC"
     ),

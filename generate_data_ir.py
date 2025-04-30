@@ -110,7 +110,7 @@ def process_split(data_split,split_name):
             for ei,example in enumerate(datum['train']):
                 test_prompt = prompts[task]["apply_rule"]+"\n"+rule+"\n"
                 test_prompt = test_prompt+ "Input: "+ str(example['input'])+"\n"
-                response = llm.generate(test_prompt, temperature=temperature)
+                response = llm.generate(test_prompt, temperature=0.7)
 
                 rule_application_list.append(
                     {

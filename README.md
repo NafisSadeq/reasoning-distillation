@@ -37,7 +37,7 @@ python proposed.py --task acre --llm_name Qwen/Qwen2.5-7B-Instruct --adapter_pat
 python proposed.py --task acre --llm_name mistralai/Mistral-7B-Instruct-v0.3 --adapter_path nsadeq/ReDis-Mistral --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
 ```
 
-## Data augmentation (Custom Training Only)
+## Data augmentation (Only needed for custom Training)
 
 Perform data augmentation using a teacher model such GPT-4o
 
@@ -56,21 +56,25 @@ python construct_pair.py
 
 This step will generate three datasets, generate_rule_sft.json, apply_rule_sft.json, and generate_rule_dpo.json. We already provide the three datasets within ./data/merged folder
 
-## Model training (Custom Training Only)
+## Model training (Only needed for custom Training)
 
-We use LLaMA-Factory for model training. Install LLaMA-Factory following instructions [here](https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#installation). Copy the three dataset files within [dataset folder](https://github.com/hiyouga/LLaMA-Factory/tree/main/data) and update [dataset info](LLaMA-Factorydata/dataset_info.json) as required. Follow the instructions [here](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/README.md). Then you can perform suprvised fine-tuning as follows. 
+We use LLaMA-Factory for model training. You can follow the steps below: 
+1. Install LLaMA-Factory following instructions [here](https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#installation).
+2. Copy the three dataset files within [dataset folder](https://github.com/hiyouga/LLaMA-Factory/tree/main/data)
+3. Update [dataset info](LLaMA-Factorydata/dataset_info.json) as required. Follow the instructions [here](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/README.md).
+4. Create model training configuration files within the [training config](LLaMA-Factory/examples/train_lora/) directory. You can find examples of training configuration files within the config folder of current repository.
+
+Then you can perform suprvised fine-tuning as follows. 
 
 ```  
-llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
+llamafactory-cli train examples/train_lora/redis-llama-sft.yaml
 ```
 
 After that you can perform alignment as follows.
 
 ```
-llamafactory-cli train examples/train_lora/llama3_lora_dpo.yaml
+llamafactory-cli train examples/train_lora/redis-llama-orpo.yaml
 ```
-
-Make sure to update the training configuration files llama3_lora_sft.yaml and llama3_lora_dpo.yaml with appropriate model name, dataset names, and hyper-parameters.
 
 ## Inference
 
