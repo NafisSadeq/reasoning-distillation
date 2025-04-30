@@ -37,7 +37,7 @@ python proposed.py --task acre --llm_name Qwen/Qwen2.5-7B-Instruct --adapter_pat
 python proposed.py --task acre --llm_name mistralai/Mistral-7B-Instruct-v0.3 --adapter_path nsadeq/ReDis-Mistral --hypo_size 10 --rg_temp 0.9 --rf_temp 0.7
 ```
 
-## Data augmentation (Only needed for custom Training)
+## Data augmentation (Only needed for custom training)
 
 Perform data augmentation using a teacher model such GPT-4o
 
@@ -56,7 +56,7 @@ python construct_pair.py
 
 This step will generate three datasets, generate_rule_sft.json, apply_rule_sft.json, and generate_rule_dpo.json. We already provide the three datasets within ./data/merged folder
 
-## Model training (Only needed for custom Training)
+## Model training (Only needed for custom training)
 
 We use LLaMA-Factory for model training. You can follow the steps below: 
 1. Install LLaMA-Factory following instructions [here](https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#installation).
